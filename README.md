@@ -9,6 +9,32 @@ When creating thumbnails for my youtube videos, I faced the need to take shots a
 To reach my objective, I created a command line job based on this jupyter notebook from [data-flair](https://data-flair.training/blogs/python-remove-image-background/). But instead of processing from webcam, I will process from a saved image on disk.
 
 
+## Example
+
+The following example shows how an image is rotated, croped for the bounds of a face and merged with a background.
+
+![resources/sample-result.png](resources/sample-result.png)
+
+## Instalation
+
+To use, clone this project or download the latest stable release on the [release page](https://github.com/andreclaudino/remove-background/releases). Then you can install it as any Python software using
+
+```SHELL
+pip3 install -e <download folder>
+```
+
+Or you can install it directly from github:
+
+```SHELL
+pip install git+https://git@github.com/andreclaudino/remove-background@stable
+```
+
+or using SSH authorization:
+
+```SHELL
+pip install git+ssh://git@github.com/andreclaudino/remove-background@stable
+```
+
 ## How to use
 
 This is a command line tool, there are the parameters:

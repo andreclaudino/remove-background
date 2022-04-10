@@ -29,7 +29,7 @@ from remove_background.processing.resize import resize_final_image
 @click.option("--face-xml-model", type=click.STRING, default="https://bit.ly/3xawZsK",
               help="The path or URL to XML cascade model used to detect faces.")
 @click.option("--face-top-offset", type=click.INT, default=200, help="Top offset for face bounding box in px")
-@click.option("--face-bottom-offset", type=click.INT, default=100,
+@click.option("--face-bottom-offset", type=click.INT, default=400,
               help="Bottom offset for face bounding box in px")
 @click.option("--face-right-offset", type=click.INT, default=50, help="Right offset for face bounding box in px")
 @click.option("--face-left-offset", type=click.INT, default=50, help="Left offset for face bounding box in px")

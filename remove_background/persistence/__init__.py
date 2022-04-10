@@ -43,5 +43,18 @@ def save_image(image, output_path: str, output_format: str):
 def _rotate_image(image, angle):
     image_center = tuple(np.array(image.shape[1::-1]) / 2)
     rotation_operator = cv2.getRotationMatrix2D(image_center, -angle, 1.0)
-    rotated_image = cv2.warpAffine(image, rotation_operator, image.shape[1::-1], flags=cv2.INTER_LINEAR)
+
+    original_height, original_width, _ = image.shape
+
+    rotation_cos = np.abs(rotation_operator[0, 0])
+    rotation_sin = np.abs(rotation_operator[0, 1])
+
+    transformed_width = int((original_height * rotation_sin) + (original_width * rotation_cos))
+    transformed_height = int((original_height * rotation_cos) + (original_width * rotation_sin))
+
+    rotation_operator[0, 2] += (transformed_width / 2) - original_width//2
+    rotation_operator[1, 2] += (transformed_height / 2) - original_height//2
+
+    rotated_image = cv2.warpAffine(image, rotation_operator, (transformed_width, transformed_height),
+                                   flags=cv2.INTER_CUBIC)
     return rotated_image

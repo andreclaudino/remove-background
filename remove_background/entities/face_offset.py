@@ -31,11 +31,13 @@ class FaceOffsets:
     def crop(self, image: ndarray, bounding_box: Tuple[int, int, int, int]):
         (x, y, width, height) = bounding_box
 
-        start_x = x - self.left
-        end_x = x + width + self.right
+        max_width, max_height, _ = image.shape
 
-        start_y = y - self.bottom
-        end_y = y + height + self.top
+        start_x = max(x - self.left, 0)
+        end_x = min(x + width + self.right, max_width)
+
+        start_y = max(y - self.top, 0)
+        end_y = y + height + self.bottom
 
         cropped = image[start_y:end_y, start_x:end_x]
 
